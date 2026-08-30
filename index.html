@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para você ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+           min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 50px 30px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    background:
+        radial-gradient(circle at top, #ffb6c9, transparent 35%),
+        linear-gradient(135deg, #6d1f3b, #a83258, #e86b88);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+            background:
+                radial-gradient(circle at top, #ffb6c9, transparent 35%),
+                linear-gradient(135deg, #6d1f3b, #a83258, #e86b88);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+
+            overflow-x: hidden;
+        }
+
+
+        /* CORAÇÕES DE FUNDO */
+
+        .coracao {
+            position: fixed;
+            color: rgba(255, 255, 255, 0.35);
+
+            font-size: 25px;
+
+            animation: flutuar 7s linear infinite;
+
+            pointer-events: none;
+        }
+
+        .c1 {
+            left: 10%;
+            bottom: -50px;
+            animation-delay: 0s;
+        }
+
+        .c2 {
+            left: 80%;
+            bottom: -50px;
+            animation-delay: 2s;
+        }
+
+        .c3 {
+            left: 45%;
+            bottom: -50px;
+            animation-delay: 4s;
+        }
+
+        @keyframes flutuar {
+
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+
+        }
+
+
+        /* CARTA */
+
+        .carta {
+
+            width: 100%;
+            max-width: 850px;
+
+            background: rgba(255, 248, 245, 0.97);
+
+            border-radius: 25px;
+
+            padding: 55px;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.35);
+
+            position: relative;
+
+            animation: aparecer 1.2s ease;
+
+        }
+
+
+        @keyframes aparecer {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* CABEÇALHO */
+
+        .topo {
+
+            text-align: center;
+
+            margin-bottom: 40px;
+
+        }
+
+        .topo .icone {
+
+            font-size: 55px;
+
+            animation: pulsar 1.5s infinite;
+
+        }
+
+        @keyframes pulsar {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+
+        }
+
+        h1 {
+
+            margin-top: 15px;
+
+            color: #8e2947;
+
+            font-size: 42px;
+
+        }
+
+        .subtitulo {
+
+            margin-top: 10px;
+
+            color: #777;
+
+            font-style: italic;
+
+            font-size: 18px;
+
+        }
+
+
+        /* SEÇÕES */
+
+        .secao {
+
+            margin-bottom: 35px;
+
+        }
+
+        .titulo-secao {
+
+            color: #8e2947;
+
+            font-size: 25px;
+
+            margin-bottom: 15px;
+
+            border-bottom: 1px solid #e5b7c2;
+
+            padding-bottom: 8px;
+
+        }
+
+        .texto {
+
+            color: #4b4b4b;
+
+            font-size: 19px;
+
+            line-height: 1.8;
+
+            white-space: pre-line;
+
+        }
+
+
+        /* POEMA */
+
+        .poema {
+
+            background: #fff0f3;
+
+            border-left: 5px solid #c94f72;
+
+            padding: 25px;
+
+            border-radius: 10px;
+
+            font-size: 19px;
+
+            line-height: 1.9;
+
+            color: #633445;
+
+            font-style: italic;
+
+            white-space: pre-line;
+
+        }
+
+
+        /* FOTO */
+
+        .foto-container {
+
+            text-align: center;
+
+            margin-top: 20px;
+
+        }
+
+        .foto-container img {
+
+            width: 100%;
+
+            max-width: 500px;
+
+            max-height: 450px;
+
+            object-fit: cover;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.2);
+
+        }
+
+        .foto-surpresa {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    height: 450px;
+    margin: auto;
+
+    border-radius: 18px;
+    overflow: hidden;
+
+    cursor: pointer;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.foto-surpresa img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter: blur(20px);
+    transform: scale(1.1);
+
+    transition: 1s ease;
+}
+
+/* Tela que fica por cima da foto */
+
+.bloqueio {
+    position: absolute;
+
+    z-index: 2;
+
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+
+    background: rgba(80, 20, 45, 0.75);
+
+    color: white;
+
+    font-size: 45px;
+
+    transition: 0.8s ease;
+}
+
+.bloqueio span {
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+}
+
+
+/* FOTO REVELADA */
+
+.foto-surpresa.revelada img {
+    filter: blur(0);
+    transform: scale(1);
+}
+
+.foto-surpresa.revelada .bloqueio {
+    opacity: 0;
+    pointer-events: none;
+}
+
+        /* BOTÃO */
+
+        .proximo {
+
+            display: flex;
+
+            justify-content: center;
+
+            margin-top: 45px;
+
+        }
+
+        .proximo button {
+
+            border: none;
+
+            padding: 17px 35px;
+
+            border-radius: 35px;
+
+            background: #a83258;
+
+            color: white;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 8px 20px rgba(168, 50, 88, 0.3);
+
+        }
+
+        .proximo button:hover {
+
+            transform: scale(1.08);
+
+            background: #8e2947;
+
+        }
+
+
+        /* RODAPÉ */
+
+        .assinatura {
+
+            text-align: right;
+
+            margin-top: 35px;
+
+            color: #8e2947;
+
+            font-style: italic;
+
+            font-size: 18px;
+
+        }
+
+
+        /* RESPONSIVIDADE */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .carta {
+                padding: 30px 22px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .texto,
+            .poema {
+                font-size: 17px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- CORAÇÕES -->
+
+    <div class="coracao c1">❤️</div>
+    <div class="coracao c2">♡</div>
+    <div class="coracao c3">♥</div>
+
+
+    <!-- CARTA -->
+
+    <main class="carta">
+
+
+        <!-- CABEÇALHO -->
+
+        <header class="topo">
+
+            <div class="icone">
+                💌
+            </div>
+
+            <h1>
+                Para você
+            </h1>
+
+            <p class="subtitulo">
+                Algumas coisas que eu queria te dizer...
+            </p>
+
+        </header>
+
+
+
+        <!-- MENSAGEM -->
+
+        <section class="secao">
+
+            <h2 class="titulo-secao">
+                Uma mensagem
+            </h2>
+
+            <p class="texto">
+Queria escrever algumas coisas que talvez sejam difíceis de dizer pessoalmente.
+
+Então fiz isso aqui para que você pudesse ler com calma.
+
+Espero que goste. ❤️
+            </p>
+
+            <p class="texto">
+Primeiro de tudo, Feliz Aniversário Marcella, te desejo tudo de bom, que 
+papai do céu te abençoe muito, espero que seu dia tenha sido muuuuuito bom. ❤️❤️
+
+            </p>
+
+            <p class="texto">
+Você sabe sabe o quanto eu gosto de você? É tipo deeeeeesse tamanho
+🫸&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🫷
+(Bastante)
+            </p>      
+        </section>
+
+
+
+        <!-- POEMA -->
+
+        <section class="secao">
+
+            <h2 class="titulo-secao">
+                Algumas palavras...
+            </h2>
+
+            <div class="poema">
+
+Te descrever e descrever nossa relação em tão poucas palavras é quase uma falácia,
+A sua complexidade vai além dos conceitos mais abstratos da física, 
+Te ler é quase descobrir uma nova língua, segue padrões, mas padrões nunca vistos antes.
+Talvez eu veja isso tudo por amor, entretanto, eu não minto em nenhum dos versos, 
+Apenos escancaro tudo, sem censura, com você eu sou feliz, com a sua amizade fui aconchegado, 
+Com você ao meu lado fui moldado, por ti eu teria mudado, como um soldado, guiado por um lema rigoroso, 
+Mesmo que isso seja pavoroso, por você, isso não seria nada.
+ ❤️
+
+ "Aquilo que se faz por amor está sempre além do bem e do mal"
+ - Friedrich Nietzsche
+
+            </div>
+
+        </section>
+
+
+
+        <!-- FOTO -->
+
+        <section class="secao">
+
+            <h2 class="titulo-secao">
+                Minha Flor Favorita 🌹 ❤️
+            </h2>
+
+           
+
+                <!-- TROQUE O NOME DA IMAGEM AQUI -->
+
+              <div class="foto-container">
+
+    <div class="foto-surpresa" onclick="revelarFoto()">
+
+        <div class="bloqueio" id="bloqueio">
+            🔒
+            <span>Clique para revelar</span>
+        </div>
+
+        <img
+            id="foto"
+            src="foto.jpeg"
+            alt=" ❤️"
+        >
+
+            </div>
+
+        </section>
+
+
+
+        <!-- OUTRA MENSAGEM -->
+
+        <section class="secao">
+
+            <h2 class="titulo-secao">
+                Ainda não acabou...
+            </h2>
+
+            <p class="texto">
+Eu poderia continuar escrevendo por muito tempo...
+
+Mas acho que é melhor deixar a próxima parte falar por mim. 👀
+            </p>
+
+        </section>
+
+
+
+        <!-- ASSINATURA -->
+
+        <p class="assinatura">
+            Com carinho, de alguém que se moldaria por você. ❤️
+        </p>
+
+
+
+        <!-- BOTÃO -->
+
+        <div class="proximo">
+
+            <button onclick="proximaPagina()">
+                Tenho mais uma coisa para te mostrar →
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+
+    <script>
+        function revelarFoto() {
+
+    const foto = document.querySelector(".foto-surpresa");
+
+    foto.classList.add("revelada");
+
+}
+
+        function proximaPagina() {
+            window.location.href = "Convite.html";
+            alert(
+                "Preparada(o)? 👀❤️"
+            );
+
+            /*
+                Aqui você pode colocar a próxima página.
+
+                Exemplo:
+
+                window.location.href = "convite.html";
+
+            */
+
+           
+        }
+        
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="carta.jpg" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Convite Secreto 💌</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                135deg,
+                #ff758c,
+                #ff7eb3
+            );
+
+            overflow: hidden;
+        }
+
+        .caixa {
+            width: 90%;
+            max-width: 450px;
+
+            padding: 40px 30px;
+
+            text-align: center;
+
+            background: white;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .emoji {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #e63963;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 14px;
+
+            border: 2px solid #ddd;
+            border-radius: 10px;
+
+            font-size: 17px;
+
+            margin-bottom: 15px;
+
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #e63963;
+        }
+
+        button {
+            border: none;
+
+            padding: 14px 28px;
+
+            border-radius: 30px;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        #entrar {
+            width: 100%;
+
+            background: #e63963;
+            color: white;
+        }
+
+        #entrar:hover {
+            transform: scale(1.05);
+        }
+
+        #erro {
+            color: #e63963;
+            display: none;
+            margin-top: 15px;
+        }
+
+        /* CONVITE */
+
+        #convite {
+            display: none;
+        }
+
+        .botoes {
+            position: relative;
+
+            width: 100%;
+            height: 100px;
+
+            margin-top: 25px;
+        }
+
+        #sim {
+            background: #e63963;
+            color: white;
+        }
+
+        #sim:hover {
+            transform: scale(1.1);
+        }
+
+        #nao {
+            position: absolute;
+
+            background: #ddd;
+            color: #555;
+
+            left: 55%;
+            top: 20px;
+        }
+
+        #mensagem {
+            display: none;
+
+            margin-top: 25px;
+
+            color: #e63963;
+
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ============================= -->
+    <!-- TELA DA SENHA -->
+    <!-- ============================= -->
+
+    <div class="caixa" id="login">
+
+        <div class="emoji">
+            🔐
+        </div>
+
+        <h1>
+            Convite Secreto
+        </h1>
+
+        <p>
+            Para descobrir o que tem aqui,
+            você precisa da senha. 👀
+            <br>
+            (Dica:o nome da MINHA FLOR FAVORITA, tudo maiúsculo)
+                </p>
+
+        <input
+            type="password"
+            id="senha"
+            placeholder="Digite a senha..."
+        >
+
+        <button id="entrar" onclick="verificarSenha()">
+            DESBLOQUEAR 
+        </button>
+
+        <p id="erro">
+            ❌ Senha incorreta!
+        </p>
+
+    </div>
+
+
+
+    <!-- ============================= -->
+    <!-- CONVITE -->
+    <!-- ============================= -->
+
+    <div class="caixa" id="convite">
+
+        <div class="emoji">
+            💌
+        </div>
+
+        <h1>
+            Você conseguiu!
+        </h1>
+
+        <p>
+            Agora que você descobriu a senha...
+        </p>
+
+        <p>
+            tenho uma pergunta muito importante:
+            <br><br>
+
+            <strong>
+                Quer sair comigo? 😏❤️
+            </strong>
+        </p>
+
+
+        <div class="botoes">
+
+            <button id="sim" onclick="aceitou()">
+                SIM ❤️
+            </button>
+
+            <button id="nao">
+                NÃO 😭
+            </button>
+
+        </div>
+
+
+        <div id="mensagem">
+            BELEZAAA! 😎❤️
+            <br><br>
+            Agora não tem mais volta.
+            Ja fala o dia e a hora no insta 😚
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+
+        // ==================================
+        // SENHA
+        // ==================================
+
+        const senhaCorreta = "MARCELLA";
+
+
+        function verificarSenha() {
+
+            const senha =
+                document.getElementById("senha").value;
+
+            const erro =
+                document.getElementById("erro");
+
+
+            if (senha === senhaCorreta) {
+
+                document.getElementById("login")
+                    .style.display = "none";
+
+                document.getElementById("convite")
+                    .style.display = "block";
+
+            } else {
+
+                erro.style.display = "block";
+
+            }
+
+        }
+
+
+
+        // ==================================
+        // BOTÃO NÃO
+        // ==================================
+
+        const botaoNao =
+            document.getElementById("nao");
+
+
+        function fugir() {
+
+            const largura =
+                window.innerWidth -
+                botaoNao.offsetWidth -
+                20;
+
+            const altura =
+                window.innerHeight -
+                botaoNao.offsetHeight -
+                20;
+
+
+            const novaX =
+                Math.random() * largura;
+
+            const novaY =
+                Math.random() * altura;
+
+
+            botaoNao.style.position = "fixed";
+
+            botaoNao.style.left =
+                novaX + "px";
+
+            botaoNao.style.top =
+                novaY + "px";
+
+        }
+
+
+        // Computador
+        botaoNao.addEventListener(
+            "mouseover",
+            fugir
+        );
+
+
+        // Celular
+        botaoNao.addEventListener(
+            "touchstart",
+            fugir
+        );
+
+
+
+        // ==================================
+        // BOTÃO SIM
+        // ==================================
+
+        function aceitou() {
+
+            document.getElementById("mensagem")
+                .style.display = "block";
+
+            document.getElementById("sim")
+                .innerHTML = "❤️ FECHADO! ❤️";
+
+            botaoNao.style.display = "none";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+
